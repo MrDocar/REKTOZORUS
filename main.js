@@ -89,7 +89,11 @@ bot.on('message', message => {
         console.log('affichage d\'une blague');
         var storynumber = blaguedb.get('blague').map('story_value').value();
         random(0,blaguedb.get('count').value());
-            message.channel.send(`Voici une blague : \n${storynumber[randnum]}`);
+        var blague_emnled = new Discord.RichEmbed()
+            .setColor('#00ff21')
+            .addField('Voici une blague : ', `${storynumber[randnum]}`)
+            .setFooter('Bot by MrDocar')
+        message.channel.send(blague_emnled);
         break;
 
         /* Réponse du help*/
