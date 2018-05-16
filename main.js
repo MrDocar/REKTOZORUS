@@ -24,6 +24,9 @@ var prefix = ("$");
 var randnum = 0;
 var servers = {};
 
+/* Connexion du bot */
+bot.login(process.env.TOKEN);
+
 /* Action bot démarrage*/
 bot.on('ready', () => {
     bot.user.setPresence({ game: { name: prefix + 'help', type:0}})
@@ -166,6 +169,3 @@ function play(connection, message) {
             
     });
 }
-
-/* Connexion du bot */
-bot.login(process.env.TOKEN);
