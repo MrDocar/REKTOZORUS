@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const Low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
-
+const Ytdl = require('ytdl-core');
 
 /* Initialisation bdd */
 const adapter_blague = new FileSync('blaguedb.json');
@@ -22,15 +22,13 @@ var bot = new Discord.Client();
 /* Déclaration des variables */ 
 var prefix = ("$");
 var randnum = 0;
+var servers = {};
 
 /* Action bot démarrage*/
 bot.on('ready', () => {
     bot.user.setPresence({ game: { name: prefix + 'help', type:0}})
     console.log('Bot connecter !');
 });
-
-/* Connexion du bot */
-bot.login(process.env.TOKEN);
 
 /* Réception d'un action */
 bot.on('message', message => {
@@ -100,7 +98,50 @@ bot.on('message', message => {
                 .setFooter('by MrDocar')
             message.channel.send(help_embed);
             break;
+        case "play":
 
+            if (!args[1]) {
+                message.channel.send('Je ne peux pas jouer de la musique si tu me donne pas de lien :expressionless: !');
+                return;
+            }
+
+            if (!message.member.voiceChannel) {
+                message.channel.send('Je ne peux pas jouer de la musique si tu n\'est pas un channel !');
+                return;
+            }
+            
+            if (!servers[message.guild.id]) servers[message.guild.id] = {
+                queue: []
+            }
+
+            var server = servers[message.guild.id];
+
+            server.queue.push(args[1]);
+
+            if (!message.guild.voiceConnection)message.member.voiceChannel.join().then(function(connection) {
+                play(connection, message)
+            });
+        break;
+
+        case "skip":
+            var server = servers[message.guild.id];
+
+            if (server.dispatcher) server.dispatcher.end();
+
+        break;
+
+        case "stop":
+            var server = servers[message.guild.id];
+
+            if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+        break;
+
+        case "stop":
+            var server = servers[message.guild.id];
+
+            if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+        break;
+        
         default:
             message.reply('Merci d\'utiliser '+prefix+' et une commande, elle sont disponibles avec '+prefix+'help');
         }
@@ -111,3 +152,20 @@ bot.on('message', message => {
 function random(min, max) {
     randnum = Math.floor((Math.random() * max) + min);
 }
+
+/* Function connection */
+function play(connection, message) {
+    var server = servers[message.guild.id];
+
+    server.dispatcher = connection.playStream(Ytdl(server.queue[0],{filter: 'audioonly'}));
+    server.queue.shift();
+
+    server.dispatcher.on("end", function () {
+        if (server.queue[0]) play(connection, message);
+        else connection.disconnect();
+            
+    });
+}
+
+/* Connexion du bot */
+bot.login(process.env.TOKEN);
