@@ -97,6 +97,7 @@ bot.on('message', message => {
         console.log('help demandée');
             var help_embed = new Discord.RichEmbed()
                 .setColor('#ffb600')
+                .addField('Music', '     - '+prefix+'play [lien YT] : Joue la musique (et la mes en en attente si une est deja en cour) \n- '+prefix+'skip : Passe a la musique suivante \n- '+prefix+'stop : Fin de la musique')
                 .addField('Commandes du bot', '     - '+prefix+'help : Affiches mes commandes \n- '+prefix+'newblague [blague] : Ajoute une blague a mon intelligence \n- '+prefix+'blague : Je te raconte une blague')
                 .addField('Interaction', '     - ping : test la connexion du bot')
                 .setFooter('by MrDocar')
