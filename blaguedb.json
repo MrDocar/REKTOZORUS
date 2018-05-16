@@ -1,0 +1,19 @@
+{
+  "blague": [
+    {
+      "id": 1,
+      "story_value": "Lundi : je creuse\nMardi : je creuse\nMercredi : je creuse\nJeudi : je creuse\nVendredi : je creuse\nSamedi : je creuse\n\nOk, la blague est plate mais le trou est profond !"
+    },
+    {
+      "id": 2,
+      "story_value": "Quelle est la plus intelligente, la blonde, la rousse ou la brune ? La rousse parce que c’est un dictionnaire.",
+      "story_author": "<@270588935061766147>"
+    },
+    {
+      "id": 3,
+      "story_value": "Qu'est-ce qu'une manifestation d'aveugles ? Un festival de Cannes.",
+      "story_author": "<@270588935061766147>"
+    }
+  ],
+  "count": 3
+}
