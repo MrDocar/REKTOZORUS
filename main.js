@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const Low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const Ytdl = require('ytdl-core');
+const ffpem = require('ffmpeg');
 
 /* Initialisation bdd */
 const adapter_blague = new FileSync('blaguedb.json');
