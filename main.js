@@ -104,6 +104,7 @@ bot.on('message', message => {
             message.channel.send(help_embed);
             break;
         case "play":
+        console.log('Début de la musique');
 
             if (!args[1]) {
                 message.channel.send('Je ne peux pas jouer de la musique si tu me donne pas de lien :expressionless: !');
@@ -129,6 +130,7 @@ bot.on('message', message => {
         break;
 
         case "skip":
+        console.log('skip de la musique');
             var server = servers[message.guild.id];
 
             if (server.dispatcher) server.dispatcher.end();
@@ -136,6 +138,8 @@ bot.on('message', message => {
         break;
 
         case "stop":
+        console.log('Fin de la musique');
+
             var server = servers[message.guild.id];
 
             if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
@@ -145,8 +149,7 @@ bot.on('message', message => {
             var server = servers[message.guild.id];
 
             if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-        break;
-        
+        break;        
         default:
             message.reply('Merci d\'utiliser '+prefix+' et une commande, elle sont disponibles avec '+prefix+'help');
         }
