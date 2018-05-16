@@ -1,11 +1,13 @@
 {
   "name": "rektozorus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Discord Bot by MrDocar",
   "main": "main.js",
   "dependencies": {
     "discord.js": "^11.3.2",
+    "express": "^4.16.3",
     "ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "^3.2.2-3",
     "lowdb": "^1.0.0",
     "opusscript": "0.0.6",
     "ytdl-core": "^0.20.4"
