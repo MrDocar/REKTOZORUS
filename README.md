@@ -1,0 +1,2 @@
+# REKTOZORUS
+Discord Bot
