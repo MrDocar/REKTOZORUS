@@ -30,7 +30,7 @@ bot.on('ready', () => {
 });
 
 /* Connexion du bot */
-bot.login('NDQ1NjU3MzU4OTE2Mzg2ODMz.DdtqUQ.4Bo8Xyn-yrZ4ALQlPzp-NLyuwnw');
+bot.login(process.env.TOKEN);
 
 /* Réception d'un action */
 bot.on('message', message => {
