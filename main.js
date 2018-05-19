@@ -22,7 +22,7 @@ userdb.defaults({ user : [], count: 1 })
 var bot = new Discord.Client();
 
 /* Déclaration des variables */ 
-var prefix = ("µ");
+var prefix = ("$");
 var randnum = 0;
 var servers = {};
 
