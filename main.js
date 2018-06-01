@@ -112,7 +112,7 @@ bot.on('message', message => {
         
         /* Appel de la team*/
         case "all":
-        message.channel.send("Les petits <@452228330813390851> sont attendu sur R6S", {
+        message.channel.send("Les petits @REKTOZOR sont attendu sur R6S", {
             tts: true
            })
         break;
