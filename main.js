@@ -5,7 +5,6 @@ const FileSync = require('lowdb/adapters/FileSync');
 const Ytdl = require('ytdl-core');
 const ffmep = require('ffmpeg-binaries');
 
-
 /* Initialisation bdd */
 const adapter_blague = new FileSync('blaguedb.json');
 const blaguedb = Low(adapter_blague);
@@ -22,7 +21,7 @@ userdb.defaults({ user : [], count: 1 })
 var bot = new Discord.Client();
 
 /* Déclaration des variables */ 
-var prefix = ("$");
+var prefix = ("µ");
 var randnum = 0;
 var servers = {};
 
@@ -46,22 +45,16 @@ bot.on('ready', () => {
 });
 
 /* Connexion du bot */
-bot.login(process.env.TOKEN);
+bot.login('NDQ2NzE2ODk4MzY1NjY5Mzc2.Dd9FTA.1XLNlBQJOFPj7-rjErNJ5GlWEu0');
 
 /* Réception d'un message */
-bot.on('message', message => {
+bot.on('message',message => {
 
     /* Test ping*/
     if (message.content === 'ping') {
-        console.log('Test du ping');    
-        message.reply('pong');  
+        console.log('Test du ping');
     }
-    
-    /* Secret commande */
-    if (message.content === '<3MrDocar<3') {
-        message.member.addRole(message.guild.roles.find("name", "REKTOZOR"));
-    }
-    
+
     /* Comment vas-tu bot ? */
 
     if (message.content === 'Comment vas-tu bot ?') {
@@ -86,6 +79,35 @@ bot.on('message', message => {
     console.log('----------------------------------- \nRéception du message, analyse ...');
 
     switch (args[0].toLowerCase()) {
+
+        /* Appel de la team*/
+        case "all":
+        let myRole = message.guild.roles.find("name", "REKTOZOR");
+        message.channel.send(`Les petits ${myRole} sont attendu sur R6S`, {
+            tts: true
+           })
+        break;
+
+        case "sound":
+
+        var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
+        var sound_embed = new Discord.RichEmbed()
+            .setColor(couleur)
+            .addField("*** :track_next: Sound :track_previous: ***",'Clic sur le 👏 pour avoir le son : GG \n Clic sur le 🏃 pour avoir le son : RUN \n Clic sur le 😱 pour avoir le son : OMG \n Clic sur le 😑 pour avoir le son : Johne \n Clic sur le 😫 pour avoir le son : Try your best \n Clic sur le 💻 pour avoir le son : Windows XP \n Clic sur le 😉 pour avoir le son : Nice')
+
+            message.channel.send(sound_embed)
+            .then(function (message) {
+                message.react('👏')
+                message.react('🏃')
+                message.react('😱')
+                message.react('😑')
+                message.react('😫')
+                message.react('💻')
+                message.react('😉')
+              });
+
+
+        break;
 
         /* Ajout d'un nouvelle blague dans la bdd*/
         case "newblague":
@@ -114,21 +136,14 @@ bot.on('message', message => {
             .setFooter('Bot by MrDocar')
         message.channel.send(blague_emnled);
         break;
-        
-        /* Appel de la team*/
-        case "all":
-        message.channel.send("Les petits @REKTOZOR sont attendu sur R6S", {
-            tts: true
-           })
-        break;
-        
-         /* Réponse du help*/
+
+        /* Réponse du help*/
         case "help": 
         console.log('help demandée');
             var help_embed = new Discord.RichEmbed()
                 .setColor('#ffb600')
                 .addField('Music', '     - '+prefix+'play [lien YT] : Joue la musique (et la mes en en attente si une est deja en cour) \n- '+prefix+'skip : Passe a la musique suivante \n- '+prefix+'stop : Fin de la musique')
-                .addField('Commandes du bot', '     - '+prefix+'help : Affiches mes commandes \n- '+prefix+'1v1 : Je vous fabrique un 1v1 custom \n- '+prefix+'newblague [blague] : Ajoute une blague a mon intelligence \n- '+prefix+'blague : Je te raconte une blague \n- '+prefix+'clear : Supprime les 100 dernier message')
+                .addField('Commandes du bot', '     - '+prefix+'help : Affiches mes commandes \n- '+prefix+'1v1 : Je vous fabrique un 1v1 custom \n- '+prefix+'clear : Je vous fait oublié les 10 dernier messages \n- '+prefix+'newblague [blague] : Ajoute une blague a mon intelligence \n- '+prefix+'blague : Je te raconte une blague \n- '+prefix+'purge : Supprime les 100 dernier message \n- '+prefix+'clear : Supprime les 10 dernier message \n- '+prefix+'sound : Pour afficher le sound board')
                 .addField('Interaction', '     - ping : test la connexion du bot')
                 .setFooter('by MrDocar')
             message.channel.send(help_embed);
@@ -212,23 +227,72 @@ bot.on('message', message => {
             message.channel.bulkDelete(10).catch(error => message.channel.send(`Erreur : dans votre selection des messages de plus de 14 jours ne peuvent pas etre supprimer`));
         break;
 
+        case "purge":
+        console.log('Purge du tchat'); 
+            message.channel.bulkDelete(100).catch(error => message.channel.send(`Erreur : dans votre selection des messages de plus de 14 jours ne peuvent pas etre supprimer`));
+        break;
+
         default:
         console.log('Error default message'); 
             message.reply('Merci d\'utiliser '+prefix+' et une commande, elle sont disponibles avec '+prefix+'help');
         }
 });
 
-bot.on('messageReactionAdd', (emoji, user) => {
-    switch (emoji) {
-        case "⬅️":
-            console.log("Left");
+
+bot.on('messageReactionAdd', (reaction, user) => {
+if (user.id != '446716898365669376') {
+    switch (reaction.emoji.name) {
+        case '👏':
+            console.log("Musique GG");
+            reaction.remove(user);
+            if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=q_6zNeY2tMY',{filter: 'audioonly'}));     });
+        break;
+        case '🏃' :
+        console.log("Musique RUN");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=UbfEpZdlTWI',{filter: 'audioonly'})); });
         break;
 
-        case "➡️":
-        console.log("right");
+        case '😱' :
+        console.log("Musique OMG");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=U1sZ8pq-NWQ',{filter: 'audioonly'})); });
         break;
-    }
+
+        case '😑' :
+        console.log("Musique Jhone");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=Oj50tXVrE4o',{filter: 'audioonly'})); });
+        break;
+
+        case '😫' :
+        console.log("Musique Try your best");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=WZWHd-vqib8',{filter: 'audioonly'})); });
+        break;
+
+        case '💻' :
+        console.log("Musique Windows XP");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=Gb2jGy76v0Y',{filter: 'audioonly'})); });
+        break;
+
+        case '😉' :
+        console.log("Musique Nice");
+        reaction.remove(user);
+        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            connection.playStream(Ytdl('https://www.youtube.com/watch?v=l52IV2LtR0I',{filter: 'audioonly'})); });
+        break;
+    }   
+}
 });
+
 
 
 /* Function random */
