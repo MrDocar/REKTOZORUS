@@ -93,7 +93,7 @@ bot.on('message',message => {
         var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
         var sound_embed = new Discord.RichEmbed()
             .setColor(couleur)
-            .addField("*** :track_next: Sound :track_previous: ***",'Clic sur le 👏 pour avoir le son : GG \n Clic sur le 🏃 pour avoir le son : RUN \n Clic sur le 😱 pour avoir le son : OMG \n Clic sur le 😑 pour avoir le son : Johne \n Clic sur le 😫 pour avoir le son : Try your best \n Clic sur le 💻 pour avoir le son : Windows XP \n Clic sur le 😉 pour avoir le son : Nice')
+            .addField("*** :track_next: Sound :track_previous: ***",'Clic sur le 👏 pour avoir le son : GG \n Clic sur le 🏃 pour avoir le son : RUN \n Clic sur le 😱 pour avoir le son : OMG \n Clic sur le 😑 pour avoir le son : John \n Clic sur le 😫 pour avoir le son : Try your best \n Clic sur le 💻 pour avoir le son : Windows XP \n Clic sur le 😉 pour avoir le son : Nice')
 
             message.channel.send(sound_embed)
             .then(function (message) {
