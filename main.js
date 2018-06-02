@@ -240,7 +240,7 @@ bot.on('message',message => {
 
 
 bot.on('messageReactionAdd', (reaction, user) => {
-if (user.id != '446716898365669376') {
+if (user.id != '445657358916386833') {
     switch (reaction.emoji.name) {
         case '👏':
             console.log("Musique GG");
