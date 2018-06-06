@@ -54,7 +54,21 @@ bot.on('message',message => {
     if (message.content === 'ping') {
         console.log('Test du ping');
     }
+    
+    /* bou */
+    if (message.content === 'bou') {
 
+            var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
+            var bou = new Discord.RichEmbed()
+                .setColor(couleur)
+                .addField('***BOU***','*** OMG BOU***')
+    
+                message.channel.send(bou)
+                .then(function (message) {
+                    message.react('😱')
+                  });
+    }
+    
     /* Comment vas-tu bot ? */
 
     if (message.content === 'Comment vas-tu bot ?') {
