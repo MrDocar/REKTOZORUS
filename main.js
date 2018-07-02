@@ -70,7 +70,7 @@ bot.on('message',message => {
     }
     
     /* bou */
-    if (message.content === 'vroum') {
+    if (message.content === 'vroume') {
 
             var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
             var vroume = new Discord.RichEmbed()
