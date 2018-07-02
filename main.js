@@ -69,6 +69,15 @@ bot.on('message',message => {
                   });
     }
     
+    /* bou */
+    if (message.content === 'vroum') {
+
+            var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
+            var vroume = new Discord.RichEmbed()
+                .setColor(couleur)
+                .addField('***VROUME***','*** VROUME *** \n *** VROUME *** \n *** VROUME *** \n *** VROUME ***')
+    }
+    
     /* Comment vas-tu bot ? */
 
     if (message.content === 'Comment vas-tu bot ?') {
