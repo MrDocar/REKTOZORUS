@@ -76,6 +76,7 @@ bot.on('message',message => {
             var vroume = new Discord.RichEmbed()
                 .setColor(couleur)
                 .addField('***VROUME***','*** VROUME *** \n *** VROUME *** \n *** VROUME *** \n *** VROUME ***')
+            message.channel.send(vroume);
     }
     
     /* Comment vas-tu bot ? */
