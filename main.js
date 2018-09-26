@@ -106,7 +106,7 @@ bot.on('message',message => {
 
         /* Appel de la team*/
         case "all":
-        let myRole = message.guild.roles.find("name", "REKTOZOR");
+        let myRole = message.guild.roles.find("name", "TEAM_REKTOZOR");
         message.channel.send(`Les petits ${myRole} sont attendu sur R6S`, {
             tts: true
            })
