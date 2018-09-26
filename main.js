@@ -21,7 +21,7 @@ userdb.defaults({ user : [], count: 1 })
 var bot = new Discord.Client();
 
 /* Déclaration des variables */ 
-var prefix = ("µ");
+var prefix = ("$");
 var randnum = 0;
 var servers = {};
 
@@ -257,7 +257,7 @@ bot.on('message',message => {
 
 
 bot.on('messageReactionAdd', (reaction, user) => {
-if (user.id != '446716898365669376') {
+if (user.id != '445657358916386833') {
     switch (reaction.emoji.name) {
         case '👏':
             console.log("Musique GG");
@@ -280,7 +280,7 @@ if (user.id != '446716898365669376') {
         break;
 
         case '😑' :
-        console.log("Musique Jhone");
+        console.log("Musique John");
         reaction.remove(user);
         if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=Oj50tXVrE4o',{filter: 'audioonly'})); });
