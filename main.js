@@ -21,7 +21,7 @@ userdb.defaults({ user : [], count: 1 })
 var bot = new Discord.Client();
 
 /* Déclaration des variables */ 
-var prefix = ("$");
+var prefix = ("µ");
 var randnum = 0;
 var servers = {};
 
@@ -47,14 +47,16 @@ bot.on('ready', () => {
 /* Connexion du bot */
 bot.login(process.env.TOKEN);
 
+
 /* Réception d'un message */
 bot.on('message',message => {
 
     /* Test ping*/
     if (message.content === 'ping') {
         console.log('Test du ping');
+        message.reply('Pong !');
     }
-    
+
     /* bou */
     if (message.content === 'bou') {
 
@@ -62,23 +64,14 @@ bot.on('message',message => {
             var bou = new Discord.RichEmbed()
                 .setColor(couleur)
                 .addField('***BOU***','*** OMG BOU***')
-    
+
                 message.channel.send(bou)
                 .then(function (message) {
                     message.react('😱')
                   });
-    }
-    
-    /* bou */
-    if (message.content === 'vroume') {
 
-            var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
-            var vroume = new Discord.RichEmbed()
-                .setColor(couleur)
-                .addField('***VROUME***','*** VROUME *** \n *** VROUME *** \n *** VROUME *** \n *** VROUME ***')
-            message.channel.send(vroume);
     }
-    
+
     /* Comment vas-tu bot ? */
 
     if (message.content === 'Comment vas-tu bot ?') {
@@ -106,7 +99,7 @@ bot.on('message',message => {
 
         /* Appel de la team*/
         case "all":
-        let myRole = message.guild.roles.find("name", "TEAM_REKTOZOR");
+        let myRole = message.guild.roles.find("name", "REKTOZOR");
         message.channel.send(`Les petits ${myRole} sont attendu sur R6S`, {
             tts: true
            })
@@ -117,7 +110,7 @@ bot.on('message',message => {
         var couleur = '#9'+random(0,9)+random(0,9)+random(0,9)+random(0,9)+random(0,9);
         var sound_embed = new Discord.RichEmbed()
             .setColor(couleur)
-            .addField("*** :track_next: Sound :track_previous: ***",'Clic sur le 👏 pour avoir le son : GG \n Clic sur le 🏃 pour avoir le son : RUN \n Clic sur le 😱 pour avoir le son : OMG \n Clic sur le 😑 pour avoir le son : John \n Clic sur le 😫 pour avoir le son : Try your best \n Clic sur le 💻 pour avoir le son : Windows XP \n Clic sur le 😉 pour avoir le son : Nice')
+            .addField("*** :track_next: Sound :track_previous: ***",'Clic sur le 👏 pour avoir le son : GG \n Clic sur le 🏃 pour avoir le son : RUN \n Clic sur le 😱 pour avoir le son : OMG \n Clic sur le 😑 pour avoir le son : Johne \n Clic sur le 😫 pour avoir le son : Try your best \n Clic sur le 💻 pour avoir le son : Windows XP \n Clic sur le 😉 pour avoir le son : Nice')
 
             message.channel.send(sound_embed)
             .then(function (message) {
@@ -264,59 +257,58 @@ bot.on('message',message => {
 
 
 bot.on('messageReactionAdd', (reaction, user) => {
-if (user.id != '445657358916386833') {
+if (user.id != '446716898365669376') {
     switch (reaction.emoji.name) {
         case '👏':
             console.log("Musique GG");
             reaction.remove(user);
-            if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+            if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=q_6zNeY2tMY',{filter: 'audioonly'}));     });
         break;
         case '🏃' :
         console.log("Musique RUN");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=UbfEpZdlTWI',{filter: 'audioonly'})); });
         break;
 
         case '😱' :
         console.log("Musique OMG");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=U1sZ8pq-NWQ',{filter: 'audioonly'})); });
         break;
 
         case '😑' :
         console.log("Musique Jhone");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=Oj50tXVrE4o',{filter: 'audioonly'})); });
         break;
 
         case '😫' :
         console.log("Musique Try your best");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=WZWHd-vqib8',{filter: 'audioonly'})); });
         break;
 
         case '💻' :
         console.log("Musique Windows XP");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=Gb2jGy76v0Y',{filter: 'audioonly'})); });
         break;
 
         case '😉' :
         console.log("Musique Nice");
         reaction.remove(user);
-        if (!user.voiceConnection) bot.channels.get('449918929830281216').join().then(function(connection) {
+        if (!user.voiceConnection) bot.channels.get('482624664192155669').join().then(function(connection) {
             connection.playStream(Ytdl('https://www.youtube.com/watch?v=l52IV2LtR0I',{filter: 'audioonly'})); });
         break;
     }   
 }
 });
-
 
 
 /* Function random */
